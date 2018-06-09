@@ -6,26 +6,26 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="http://gmpg.org/xfn/11" />
-        
+
         <title>$station.location Yearly Weather Summary</title>
-        
+
         <!-- Open Graph -->
         <meta property="og:site_name" content="$station.location Yearly Weather Summary" />
         <meta property="og:description" content="Yearly Weather Summary from $station.location - weather web site powered by weewx" />
-		<meta property="og:type" content="website" /> 
+		<meta property="og:type" content="website" />
 
         <!-- Icons -->
         <link rel="icon" href="favicon.ico" type="image/png">
 		<link rel="apple-touch-icon" href="touch-icon.png"/>
-        
+
         <!-- Styles -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
-        
+
         <!-- Skripte -->
         <script src="js/modernizr-2.6.2.min.js"></script>
-        
+
         <script type="text/javascript">
             function openNoaaFile(date)
             {
@@ -47,7 +47,7 @@
                 <h2>Yearly Weather Summary</h2>
                 <p><i class="fa fa-clock-o" ></i> $current.dateTime</p>
                 </div>
-                
+
                 <div class="h-right" >
                     <table>
                         <tr><td><b>Station:</b></td><td>$station.hardware</td></tr>
@@ -80,12 +80,12 @@
                 </nav>
             </div>
         </header>
-        
+
         <div class="main" >
         <div class="container" >
-            
+
             <div class="left" >
-                
+
                 <div class="card" >
                     <h1><i class="fa fa-calendar-o m-rot" ></i> Calendar Year</h1>
                     <table class="tablespacer">
@@ -104,8 +104,8 @@
                         <tr><td>RMS Wind</td><td>$year.wind.rms</td><td></td></tr>
                         <tr><td>Vector Average Speed</td><td>$year.wind.vecavg</td><td></td></tr>
                         <tr><td>Vector Average Direction</td><td>$year.wind.vecdir</td><td></td></tr>
-                        <tr><td>High Inside Temperature</td><td>$year.inTemp.max</td><td>$year.inTemp.maxtime</td></tr>
-                        <tr><td>Low Inside Temperature</td><td>$year.inTemp.min</td><td>$year.inTemp.mintime</td></tr>
+                        <!--<tr><td>High Inside Temperature</td><td>$year.inTemp.max</td><td>$year.inTemp.maxtime</td></tr>-->
+                        <!--<tr><td>Low Inside Temperature</td><td>$year.inTemp.min</td><td>$year.inTemp.mintime</td></tr>-->
                         #if $year.extraTemp1.has_data
                         <tr><td>High Pond Temp</td><td>$year.extraTemp1.max</td><td>$year.extraTemp1.maxtime</td></tr>
                         <tr><td>Low Pond Temp</td><td>$year.extraTemp1.min</td><td>$year.extraTemp1.mintime</td></tr>
@@ -134,12 +134,12 @@
                 </div>
 
             </div>
-            
+
             <div class="right" >
 
                 <div class="card cc graphs" >
                     <h1><i class="fa fa-line-chart m-gruen" ></i> Yearly Statistics and Plots</h1>
-                    
+
                     <img src="yeartempdew.png" alt="temperatures" />
                     <img src="yearhumidity.png" alt="humidity" />
                     <img src="yeartempchill.png" alt="heatchill" />
@@ -148,7 +148,7 @@
                     <img src="yearwind.png" alt="wind" />
                     <img src="yearbarometer.png" alt="barometer"/>
                     <img src="yearwinddir.png" alt="Hi Wind" />
-                    <img src="yearinside.png" alt="Inside" />
+                    <!--<img src="yearinside.png" alt="Inside" />-->
                     <img src="yearwindvec.png" alt="Wind Vector" />
                     #if $year.UV.has_data
                     <img src="yearuv.png" alt="UV Index" />
@@ -160,20 +160,20 @@
                     <img src="yearuv.png" alt="UV Index" />
                     #end if
                     #if $year.rxCheckPercent.has_data
-                    <img src="yearrx.png" alt="year rx percent"/>
+                    <!--<img src="yearrx.png" alt="year rx percent"/>-->
                     #end if
                     #if $year.extraTemp1.has_data
                     <img src="yearpond.png" alt="Pond Temperatures" />
                     #end if
                 </div>
-                
+
             </div>
         </div>
         </div>
-        
+
         <footer>
             <div class="container-fix" >
-            All rights reserved. &copy; 2014 
+            All rights reserved. &copy; 2014
             #if $Extras.has_key('you')
             $Extras.you
             #end if
@@ -189,7 +189,7 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            
+
             ga('create', '$Extras.googleAnalyticsId', 'auto');
             ga('send', 'pageview');
         </script>

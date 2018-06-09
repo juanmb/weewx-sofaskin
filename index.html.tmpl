@@ -6,26 +6,26 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="http://gmpg.org/xfn/11" />
-        
+
         <title>$station.location Current Weather Conditions</title>
-        
+
         <!-- Open Graph -->
         <meta property="og:site_name" content="$station.location Current Weather Conditions" />
         <meta property="og:description" content="Current Weather Conditions in $station.location - weather web site powered by weewx" />
-		<meta property="og:type" content="website" /> 
+		<meta property="og:type" content="website" />
 
         <!-- Icons -->
         <link rel="icon" href="favicon.ico" type="image/png">
 		<link rel="apple-touch-icon" href="touch-icon.png"/>
-        
+
         <!-- Styles -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
-        
+
         <!-- Skripte -->
         <script src="js/modernizr-2.6.2.min.js"></script>
-        
+
         <script type="text/javascript">
             function openNoaaFile(date)
             {
@@ -47,7 +47,7 @@
                 <h2>Current Weather Conditions</h2>
                 <p><i class="fa fa-clock-o" ></i> $current.dateTime</p>
                 </div>
-                
+
                 <div class="h-right" >
                     <table>
                         <tr><td><b>Station:</b></td><td>$station.hardware</td></tr>
@@ -80,12 +80,12 @@
                 </nav>
             </div>
         </header>
-        
+
         <div class="main" >
         <div class="container" >
-            
+
             <div class="left" >
-                
+
                 <div class="card" >
                     <h1><i class="fa fa-sun-o m-orange" ></i> Current Conditions</h1>
                     <table class="tablespacer">
@@ -98,7 +98,7 @@
                         <tr><td>Barometer Trend ($trend.time_delta.hour.format("%.0f"))</td><td>$trend.barometer</td></tr>
                         <tr><td>Wind</td><td>$current.windSpeed $current.windDir.ordinal_compass ($current.windDir)</td></tr>
                         <tr><td>Rain Rate</td><td>$current.rainRate</td></tr>
-                        <tr><td>Inside Temperature</td><td>$current.inTemp</td></tr>
+                        <!--<tr><td>Inside Temperature</td><td>$current.inTemp</td></tr>-->
                         #if $day.extraTemp1.has_data
                         <tr><td>Pond Temperature</td><td>$current.extraTemp1</td></tr>
                         #end if
@@ -134,8 +134,8 @@
                         <tr><td>RMS Wind</td><td>$day.wind.rms</td><td></td></tr>
                         <tr><td>Vector Average Speed</td><td>$day.wind.vecavg</td><td></td></tr>
                         <tr><td>Vector Average Direction</td><td>$day.wind.vecdir</td><td></td></tr>
-                        <tr><td>High Inside Temperature</td><td>$day.inTemp.max</td><td>$day.inTemp.maxtime</td></tr>
-                        <tr><td>Low Inside Temperature</td><td>$day.inTemp.min</td><td>$day.inTemp.mintime</td></tr>
+                        <!--<tr><td>High Inside Temperature</td><td>$day.inTemp.max</td><td>$day.inTemp.maxtime</td></tr>-->
+                        <!--<tr><td>Low Inside Temperature</td><td>$day.inTemp.min</td><td>$day.inTemp.mintime</td></tr>-->
                         #if $day.extraTemp1.has_data
                         <tr><td>High Pond Temp</td><td>$day.extraTemp1.max</td><td>$day.extraTemp1.maxtime</td></tr>
                         <tr><td>Low Pond Temp</td><td>$day.extraTemp1.min</td><td>$day.extraTemp1.mintime</td></tr>
@@ -154,9 +154,9 @@
                         #end if
                     </table>
                 </div>
-                
+
                 #if $Extras.has_key('radar_img')
-                <div class="card" >                    
+                <div class="card" >
                     #if $Extras.has_key('radar_url')
                     <a href="$Extras.radar_url" target="_blank">
                     #end if
@@ -164,12 +164,12 @@
                     #if $Extras.has_key('radar_url')
                     </a>
                     #end if
-                    
+
                     <h3>
                         #if $Extras.has_key('radar_gif')
-                        
+
                         <a id="btn1" class="cpointer" >Image / Animation</a>
-                        <script>    
+                        <script>
                             function changeRadar() {
                                 if(document.getElementById("radar").src == "$Extras.radar_img") {
                                     document.getElementById("radar").src = "$Extras.radar_gif";
@@ -177,24 +177,24 @@
                                     document.getElementById("radar").src = "$Extras.radar_img";
                                 }
                             }
-                            
+
                             var el = document.getElementById('btn1');
                             el.onclick = changeRadar;
                         </script>
                         #end if
-                    
+
                         #if $Extras.has_key('radar_url_alt')
                         #if $Extras.has_key('radar_url_alt_text')
                         | <a href="$Extras.radar_url_alt" target="_blank" >$Extras.radar_url_alt_text</a>
-                        #else 
+                        #else
                         | <a href="$Extras.radar_url_alt" target="_blank" >Second Radar</a>
                         #end if
                         #end if
                     </h3>
-                    
+
                 </div>
                 #end if
-                
+
                 #if $Extras.has_key('lightning_map')
                 <div class="card" >
                     #if $Extras.has_key('lightning_url')
@@ -208,7 +208,7 @@
                 #end if
 
             </div>
-            
+
             <div class="right" >
 
                 <div class="card" >
@@ -273,10 +273,10 @@
                     </table>
                     #end if
                 </div>
-                
+
                 <div class="card cc graphs" >
                     <h1><i class="fa fa-line-chart m-gruen" ></i> Graphs</h1>
-                    
+
                     <img src="daytempdew.png" alt="temperatures" />
                     <img src="dayhumidity.png" alt="humidity" />
                     <img src="daytempchill.png" alt="heatchill" />
@@ -284,7 +284,7 @@
                     <img src="daywind.png" alt="wind" />
                     <img src="daybarometer.png" alt="barometer"/>
                     <img src="daywinddir.png" alt="Hi Wind" />
-                    <img src="dayinside.png" alt="Inside" />
+                    <!--<img src="dayinside.png" alt="Inside" />-->
                     <img src="daywindvec.png" alt="Wind Vector" />
                     #if $day.radiation.has_data
                     <img src="dayradiation.png" alt="Radiation" />
@@ -293,20 +293,20 @@
                     <img src="dayuv.png" alt="UV Index" />
                     #end if
                     #if $day.rxCheckPercent.has_data
-                    <img src="dayrx.png" alt="day rx percent"/>
+                    <!--<img src="dayrx.png" alt="day rx percent"/>-->
                     #end if
                     #if $day.extraTemp1.has_data
                     <img src="daypond.png" alt="Pond Temperatures" />
                     #end if
                 </div>
-                
+
             </div>
         </div>
         </div>
-        
+
         <footer>
             <div class="container-fix" >
-            All rights reserved. &copy; 2014 
+            All rights reserved. &copy; 2014
             #if $Extras.has_key('you')
             $Extras.you
             #end if
@@ -322,7 +322,7 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            
+
             ga('create', '$Extras.googleAnalyticsId', 'auto');
             ga('send', 'pageview');
         </script>
