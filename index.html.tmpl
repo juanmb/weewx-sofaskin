@@ -207,6 +207,18 @@
                 </div>
                 #end if
 
+                #if $Extras.has_key('rain_map')
+                <div class="card" style="text-align: center;">
+                    #if $Extras.has_key('rain_url')
+                    <a href="$Extras.rain_url" target="_blank">
+                    #end if
+                    <img src="$Extras.rain_map" alt="Rain Map" class="space small" />
+                    #if $Extras.has_key('rain_url')
+                    </a>
+                    #end if
+                </div>
+                #end if
+
             </div>
 
             <div class="right" >
